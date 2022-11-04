@@ -9,11 +9,34 @@ const currentUser = {username: "", avatar: ""};
 
 const users = [];
 
-const tweets = [];
+const tweets = [{
+    avatar: "",
+    username: "bobesponja",
+    tweet: "eu amo o hub"
+}, {
+    avatar: "",
+    username: "bobesponja",
+    tweet: "eu amo o hub"
+}, {
+    avatar: "",
+    username: "bobesponja",
+    tweet: "eu amo o hub"
+}];
 
 app.get ("/tweets", (req, res) => {
 
+    
+    if (tweets.length > 10) {
+        const latestTweets = [];
+        for (let i = tweets.length-10; i < tweets.length; i++) {
+            latestTweets.push(tweets[i]);
 
+        }
+        res.send(latestTweets);
+        return;
+    }
+   
+    
     res.send(tweets);
 });
 
