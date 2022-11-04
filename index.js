@@ -9,19 +9,7 @@ const currentUser = {username: "", avatar: ""};
 
 const users = [];
 
-const tweets = [{
-    avatar: "",
-    username: "bobesponja",
-    tweet: "eu amo o hub"
-}, {
-    avatar: "",
-    username: "bobesponja",
-    tweet: "eu amo o hub"
-}, {
-    avatar: "",
-    username: "bobesponja",
-    tweet: "eu amo o hub"
-}];
+const tweets = [];
 
 app.get ("/tweets", (req, res) => {
 
@@ -50,8 +38,8 @@ app.post('/tweets', (req, res) => {
     tweet
     }
 
-    if (!username || !tweet || avatar) {
-        res.sendStatus(400).send("Preencha todos os campos");
+    if (!username || !tweet) {
+        res.sendStatus(400).send("Todos os campos são obrigatórios");
         return;
        }
 
@@ -70,7 +58,7 @@ app.post('/sign-up', (req, res) => {
 
 
    if (!username || !avatar) {
-    res.sendStatus(400).send("Preencha todos os campos");
+    res.sendStatus(400).send("Todos os campos são obrigatórios");
     return;
    }
 
