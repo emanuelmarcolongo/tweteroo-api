@@ -5,42 +5,35 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-const currentUser = [];
+const currentUser = {username: "", avatar: ""};
 
 const users = [];
 
-const tweets = [{
-    username: "bobesponja",
-  tweet: "eu amo o hub"
-}, {
-    username: "bobesponja",
-  tweet: "eu amo o hub"
-}, {
-    username: "bobesponja",
-  tweet: "eu amo o hub"
-}];
+const tweets = [];
 
 app.get ("/tweets", (req, res) => {
+
 
     res.send(tweets);
 });
 
 
 app.post('/tweets', (req, res) => {
-    const {username, tweet} = req.body;
+    const {username, avatar, tweet} = req.body;
 
     const newTweet = {
     username,
+    avatar: currentUser.avatar,
     tweet
     }
 
-    if (!username || !tweet) {
+    if (!username || !tweet || avatar) {
         res.sendStatus(400).send("Preencha todos os campos");
         return;
        }
 
     tweets.push(newTweet);
-    res.sendStatus(200).send("OK")
+    res.sendStatus(200).send(console.log(newTweet));
 });
 
 
@@ -65,9 +58,10 @@ app.post('/sign-up', (req, res) => {
     return;
    }
    
-   currentUser.push(newUser);
+   currentUser.username = newUser.username;
+   currentUser.avatar = newUser.avatar;
    users.push(newUser);
-   res.sendStatus(200).send("OK");
+   res.sendStatus(200).send(console.log(currentUser));
 })
 
 app.listen(5000);
