@@ -62,12 +62,14 @@ app.post('/sign-up', (req, res) => {
     return;
    }
 
-   const usuarios = users.find((obj) => obj.username === username);
-   if (usuarios) {
+
+   // Validação de nome de usuário igual (não estava nos requisitos)
+//    const usuarios = users.find((obj) => obj.username === username);
+//    if (usuarios) {
    
-    res.sendStatus(409).send("Usuário já existente")
-    return;
-   }
+//     res.sendStatus(409).send("Usuário já existente")
+//     return;
+//    }
    
    currentUser.username = newUser.username;
    currentUser.avatar = newUser.avatar;
