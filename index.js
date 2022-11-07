@@ -20,17 +20,19 @@ app.get ("/tweets", (req, res) => {
             latestTweets.push(tweets[i]);
 
         }
-        res.send(latestTweets);
+
+        const reverseTweets = latestTweets.reverse();
+        res.send(reverseTweets);
         return;
     }
    
-    
-    res.send(tweets);
+    const reverse = tweets.reverse();
+    res.send(reverse);
 });
 
 
 app.post('/tweets', (req, res) => {
-    const {username, avatar, tweet} = req.body;
+    const {username, tweet} = req.body;
 
     const newTweet = {
     username,
@@ -44,7 +46,7 @@ app.post('/tweets', (req, res) => {
        }
 
     tweets.push(newTweet);
-    res.sendStatus(200).send(console.log(newTweet));
+    res.sendStatus(201);
 });
 
 

@@ -2,7 +2,6 @@
   "name": "projeto12-tweteroo",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,5 +16,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmanuelMarcolongo/projeto12-tweteroo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EmanuelMarcolongo/projeto12-tweteroo/issues"
+  },
+  "homepage": "https://github.com/EmanuelMarcolongo/projeto12-tweteroo#readme",
+  "description": ""
 }
