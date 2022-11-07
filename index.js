@@ -11,6 +11,8 @@ const users = [];
 
 const tweets = [];
 
+
+
 app.get ("/tweets", (req, res) => {
 
     
@@ -28,6 +30,20 @@ app.get ("/tweets", (req, res) => {
    
     const reverse = tweets.reverse();
     res.send(reverse);
+});
+
+app.get ("/tweets/:username", (req, res) => {
+
+    const usertweets = tweets.filter((i) => i.username.toLowerCase() === req.params.username.toLowerCase());
+    const reverse = usertweets.reverse();
+
+    if (usertweets) {
+        res.send(usertweets);
+    }
+
+    res.sendStatus(400).send("Não há tweets deste usuário")
+   
+   
 });
 
 
@@ -76,7 +92,7 @@ app.post('/sign-up', (req, res) => {
    currentUser.username = newUser.username;
    currentUser.avatar = newUser.avatar;
    users.push(newUser);
-   res.sendStatus(200).send(console.log(currentUser));
+   res.sendStatus(201).send(newUser);
 })
 
 app.listen(5000);
