@@ -43,7 +43,7 @@ app.get ("/tweets/:username", (req, res) => {
         res.send(usertweets);
     }
 
-    res.sendStatus(400).send("Não há tweets deste usuário")
+    res.status(400).send("Não há tweets deste usuário")
    
    
 });
@@ -59,12 +59,12 @@ app.post('/tweets', (req, res) => {
     }
 
     if (!username || !tweet) {
-        res.sendStatus(400).send("Todos os campos são obrigatórios");
+        res.status(400).send("Todos os campos são obrigatórios");
         return;
        }
 
     tweets.push(newTweet);
-    res.sendStatus(201);
+    res.status(201);
 });
 
 
@@ -78,7 +78,7 @@ app.post('/sign-up', (req, res) => {
 
 
    if (!username || !avatar) {
-    res.sendStatus(400).send("Todos os campos são obrigatórios");
+    res.status(400).send("Todos os campos são obrigatórios");
     return;
    }
 
@@ -94,7 +94,7 @@ app.post('/sign-up', (req, res) => {
    currentUser.username = newUser.username;
    currentUser.avatar = newUser.avatar;
    users.push(newUser);
-   res.sendStatus(201).send(newUser);
+   res.status(201).send(newUser);
 })
 
 app.listen(5000);
