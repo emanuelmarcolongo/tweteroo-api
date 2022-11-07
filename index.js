@@ -11,6 +11,8 @@ const users = [];
 
 const tweets = [];
 
+let reverse;
+
 
 
 app.get ("/tweets", (req, res) => {
@@ -23,19 +25,19 @@ app.get ("/tweets", (req, res) => {
 
         }
 
-        const reverseTweets = latestTweets.reverse();
-        res.send(reverseTweets);
+        reverse = [...latestTweets].reverse();
+        res.send(reverse);
         return;
     }
    
-    const reverse = tweets.reverse();
+    reverse = [...tweets].reverse();
     res.send(reverse);
 });
 
 app.get ("/tweets/:username", (req, res) => {
 
     const usertweets = tweets.filter((i) => i.username.toLowerCase() === req.params.username.toLowerCase());
-    const reverse = usertweets.reverse();
+    reverse = usertweets.reverse();
 
     if (usertweets) {
         res.send(usertweets);
